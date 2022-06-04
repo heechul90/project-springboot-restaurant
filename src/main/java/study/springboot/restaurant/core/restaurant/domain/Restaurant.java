@@ -33,6 +33,7 @@ public class Restaurant {
     private int visitCount;
     private LocalDateTime lastVisitDate;
 
+    //===생성 메서드===//
     @Builder(builderMethodName = "createRestaurant")
     public Restaurant(String title, String category, String address, String roadAddress, String homePageLink, String imageLink, boolean isVisit, int visitCount, LocalDateTime lastVisitDate) {
         this.title = title;
@@ -46,7 +47,13 @@ public class Restaurant {
         this.lastVisitDate = lastVisitDate;
     }
 
+    //===변경 메서드===//
     public void changeTitle(String title) {
         this.title = title;
+    }
+
+    public void visit(Boolean isVisit) {
+        this.isVisit = isVisit;
+        this.visitCount += 1;
     }
 }

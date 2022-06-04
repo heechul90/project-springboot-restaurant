@@ -83,6 +83,23 @@ public class RestaurantController {
         return new JsonResult("OK", savedId);
     }
 
+    //TODO 식당 수정
 
+    /**
+     * 식장 삭제
+     */
+    @DeleteMapping(value = "/{id}")
+    public JsonResult deleteRestaurant(@PathVariable("id") Long id) {
+        restaurantService.deleteRestaurant(id);
+        return new JsonResult("OK", null);
+    }
 
+    /**
+     * 식당 방문 카운트
+     */
+    @PostMapping(value = "/{id}/visit")
+    public JsonResult visitRestaurant(@PathVariable("id") Long id) {
+        restaurantService.visitRestaurant(id);
+        return new JsonResult("OK", null);
+    }
 }
