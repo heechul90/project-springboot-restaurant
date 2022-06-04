@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/restaurants")
-public class RestaurantController {
+public class ApiRestaurantController {
 
     private final NaverService naverService;
     private final RestaurantService restaurantService;
@@ -38,12 +38,16 @@ public class RestaurantController {
         List<Restaurant> restaurants = restaurantService.findRestaurants();
         List<RestaurantDto> collect = restaurants.stream()
                 .map(restaurant -> new RestaurantDto(
+                        restaurant.getId(),
                         restaurant.getTitle(),
                         restaurant.getCategory(),
                         restaurant.getAddress(),
                         restaurant.getRoadAddress(),
                         restaurant.getHomePageLink(),
-                        restaurant.getImageLink()
+                        restaurant.getImageLink(),
+                        restaurant.isVisit(),
+                        restaurant.getVisitCount(),
+                        restaurant.getLastVisitDate()
                 ))
                 .collect(Collectors.toList());
         return new JsonResult("OK", collect);
@@ -56,12 +60,16 @@ public class RestaurantController {
     public JsonResult findRestaurant(@PathVariable("id") Long id) {
         Restaurant findRestaurant = restaurantService.findRestaurant(id);
         RestaurantDto restaurant = new RestaurantDto(
+                findRestaurant.getId(),
                 findRestaurant.getTitle(),
                 findRestaurant.getCategory(),
                 findRestaurant.getAddress(),
                 findRestaurant.getRoadAddress(),
                 findRestaurant.getHomePageLink(),
-                findRestaurant.getImageLink()
+                findRestaurant.getImageLink(),
+                findRestaurant.isVisit(),
+                findRestaurant.getVisitCount(),
+                findRestaurant.getLastVisitDate()
         );
         return new JsonResult("OK", restaurant);
     }
@@ -79,8 +87,21 @@ public class RestaurantController {
                 .homePageLink(restaurantDto.getHomePageLink())
                 .imageLink(restaurantDto.getImageLink())
                 .build();
-        Long savedId = restaurantService.saveRestaurant(restaurant);
-        return new JsonResult("OK", savedId);
+        Restaurant savedRestaurant = restaurantService.saveRestaurant(restaurant);
+        RestaurantDto dto = new RestaurantDto(
+                savedRestaurant.getId(),
+                savedRestaurant.getTitle(),
+                savedRestaurant.getCategory(),
+                savedRestaurant.getAddress(),
+                savedRestaurant.getRoadAddress(),
+                savedRestaurant.getHomePageLink(),
+                savedRestaurant.getImageLink(),
+                savedRestaurant.isVisit(),
+                savedRestaurant.getVisitCount(),
+                savedRestaurant.getLastVisitDate()
+        );
+
+        return new JsonResult("OK", dto);
     }
 
     //TODO 식당 수정
@@ -97,7 +118,7 @@ public class RestaurantController {
     /**
      * 식당 방문 카운트
      */
-    @PostMapping(value = "/{id}/visit")
+    @PostMapping(value = "/{id}")
     public JsonResult visitRestaurant(@PathVariable("id") Long id) {
         restaurantService.visitRestaurant(id);
         return new JsonResult("OK", null);

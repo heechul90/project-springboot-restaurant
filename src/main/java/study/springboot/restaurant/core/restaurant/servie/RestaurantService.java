@@ -34,9 +34,9 @@ public class RestaurantService {
      * 식당 저장
      */
     @Transactional
-    public Long saveRestaurant(Restaurant restaurant) {
+    public Restaurant saveRestaurant(Restaurant restaurant) {
         Restaurant savedRestaurant = restaurantRepository.save(restaurant);
-        return savedRestaurant.getId();
+        return savedRestaurant;
     }
 
     //TODO 수정
