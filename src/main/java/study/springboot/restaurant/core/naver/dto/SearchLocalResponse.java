@@ -1,4 +1,4 @@
-package study.springboot.restaurant.naver.dto;
+package study.springboot.restaurant.core.naver.dto;
 
 import lombok.*;
 

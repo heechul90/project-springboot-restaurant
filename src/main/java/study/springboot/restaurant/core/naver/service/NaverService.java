@@ -1,22 +1,18 @@
-package study.springboot.restaurant.service;
+package study.springboot.restaurant.core.naver.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import study.springboot.restaurant.domain.RestaurantDto;
-import study.springboot.restaurant.naver.NaverClient;
-import study.springboot.restaurant.naver.dto.SearchImageRequest;
-import study.springboot.restaurant.naver.dto.SearchImageResponse;
-import study.springboot.restaurant.naver.dto.SearchLocalRequest;
-import study.springboot.restaurant.naver.dto.SearchLocalResponse;
-import study.springboot.restaurant.repository.RestaurantRepository;
+import study.springboot.restaurant.core.naver.client.NaverClient;
+import study.springboot.restaurant.core.naver.dto.SearchImageRequest;
+import study.springboot.restaurant.core.naver.dto.SearchImageResponse;
+import study.springboot.restaurant.core.naver.dto.SearchLocalRequest;
+import study.springboot.restaurant.core.naver.dto.SearchLocalResponse;
+import study.springboot.restaurant.core.restaurant.dto.RestaurantDto;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class RestaurantService {
+public class NaverService {
 
-    private final RestaurantRepository restaurantRepository;
     private final NaverClient naverClient;
 
     public RestaurantDto search(String localQuery) {
@@ -43,7 +39,7 @@ public class RestaurantService {
                 restaurantDto.setTitle(localItem.getTitle());
                 restaurantDto.setCategory(localItem.getCategory());
                 restaurantDto.setAddress(localItem.getAddress());
-                restaurantDto.setReadAddress(localItem.getRoadAddress());
+                restaurantDto.setRoadAddress(localItem.getRoadAddress());
                 restaurantDto.setHomePageLink(localItem.getLink());
                 restaurantDto.setImageLink(imageItem.getLink());
                 return restaurantDto;
@@ -51,5 +47,4 @@ public class RestaurantService {
         }
         return new RestaurantDto();
     }
-
 }

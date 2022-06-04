@@ -1,8 +1,6 @@
-package study.springboot.restaurant.domain;
+package study.springboot.restaurant.core.restaurant.dto;
 
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -14,10 +12,7 @@ public class RestaurantDto {
     private String title;
     private String category;
     private String address;
-    private String readAddress;
+    private String roadAddress;
     private String homePageLink;
     private String imageLink;
-    private boolean isVisit;
-    private int visitCount;
-    private LocalDateTime lastVisitDate;
 }

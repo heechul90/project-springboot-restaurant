@@ -1,10 +1,10 @@
-package study.springboot.restaurant.repository;
+package study.springboot.restaurant.core.restaurant.repository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import study.springboot.restaurant.domain.Restaurant;
+import study.springboot.restaurant.core.restaurant.domain.Restaurant;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,7 +28,7 @@ class RestaurantRepositoryTest {
                 .title("title")
                 .category("category")
                 .address("address")
-                .readAddress("readAddress")
+                .roadAddress("roadAddress")
                 .homePageLink("www")
                 .imageLink("www")
                 .isVisit(true)

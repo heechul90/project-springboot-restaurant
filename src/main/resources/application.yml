@@ -17,6 +17,10 @@ spring:
         format_sql: true
         default_batch_fetch_size: 1000
 
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
 logging:
   level:
     org.hibernate.SQL: debug

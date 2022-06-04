@@ -1,12 +1,13 @@
-package study.springboot.restaurant.naver;
+package study.springboot.restaurant.core.naver.client;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import study.springboot.restaurant.naver.dto.SearchImageRequest;
-import study.springboot.restaurant.naver.dto.SearchImageResponse;
-import study.springboot.restaurant.naver.dto.SearchLocalRequest;
-import study.springboot.restaurant.naver.dto.SearchLocalResponse;
+import study.springboot.restaurant.core.naver.dto.SearchImageRequest;
+import study.springboot.restaurant.core.naver.dto.SearchImageResponse;
+import study.springboot.restaurant.core.naver.dto.SearchLocalRequest;
+import study.springboot.restaurant.core.naver.dto.SearchLocalResponse;
+import study.springboot.restaurant.core.naver.client.NaverClient;
 
 @SpringBootTest
 class NaverClientTest {

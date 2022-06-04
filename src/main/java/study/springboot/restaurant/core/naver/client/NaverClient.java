@@ -1,4 +1,4 @@
-package study.springboot.restaurant.naver;
+package study.springboot.restaurant.core.naver.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -6,10 +6,10 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-import study.springboot.restaurant.naver.dto.SearchImageRequest;
-import study.springboot.restaurant.naver.dto.SearchImageResponse;
-import study.springboot.restaurant.naver.dto.SearchLocalRequest;
-import study.springboot.restaurant.naver.dto.SearchLocalResponse;
+import study.springboot.restaurant.core.naver.dto.SearchImageRequest;
+import study.springboot.restaurant.core.naver.dto.SearchImageResponse;
+import study.springboot.restaurant.core.naver.dto.SearchLocalRequest;
+import study.springboot.restaurant.core.naver.dto.SearchLocalResponse;
 
 import java.net.URI;
 
