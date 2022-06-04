@@ -24,7 +24,6 @@ public class Restaurant {
     private Long id;
 
     private String title;
-
     private String category;
     private String address;
     private String readAddress;
